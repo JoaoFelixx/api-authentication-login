@@ -1,6 +1,6 @@
-const authenticate = require('./auth');
+const authenticate = require('./authUser');
 
-const authenticationController = (request, response) => {
+const authUserController = (request, response) => {
   try {
     const { email, password, id } = request.body;
 

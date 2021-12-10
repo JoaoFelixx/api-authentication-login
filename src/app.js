@@ -1,11 +1,14 @@
 const express = require("express");
-const cors = require("cors");
+const { middleware_cors } = require("./middlewares");
 const routes = require("./routes");
+const PORT = 3000;
 
 const app = express();
 
 app.use(express.json());
-app.use(cors());
-app.use(routes);
+app.use(middleware_cors);
 
-app.listen(3000, () => console.log('Server on'))
+app.use('/', routes);
+
+
+app.listen(PORT, () => console.log('Server on at http://localhost:3000'))
