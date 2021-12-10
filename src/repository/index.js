@@ -1,7 +1,5 @@
 const UserRepository = require('./UserRepository');
 
-const repositories = {
+module.exports = {
   UserRepository,
-}
-
-module.exports = repositories;
+};

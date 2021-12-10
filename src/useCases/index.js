@@ -1,7 +1,9 @@
 const createUserController =  require('./create');
+const authUserController = require('./auth');
+const getController = require('./get'); 
 
-const useCases = {
+module.exports = {
   createUserController,
-}
-
-module.exports = useCases;
+  authUserController,
+  getController,
+};

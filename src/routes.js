@@ -1,9 +1,16 @@
 const { Router } = require('express');
-const { createUserController } = require('./useCases');
+const { middleware_jwt } = require('./middlewares')
+const { 
+  getController,
+  authUserController, 
+  createUserController,
+} = require('./useCases');
 
 const router = Router();
 
-router.post('/users', createUserController)
+router.get('/users', middleware_jwt, getController)
 
+router.post('/users', createUserController)
+router.post('/auth', authUserController)
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const { middleware_cors } = require('./middleware_cors');
+const { middleware_jwt } = require('./middleware_jwt');
 
-const middlewares = {
-  middleware_cors
-}
-
-module.exports = middlewares;
+module.exports =  {
+  middleware_cors,
+  middleware_jwt,
+};

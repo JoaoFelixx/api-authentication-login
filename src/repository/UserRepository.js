@@ -1,6 +1,5 @@
 const { mysqlConnection: mySql } = require('../connection');
  
-
 class UserRepository {
   async get(email) {
     return await mySql.promise().execute(

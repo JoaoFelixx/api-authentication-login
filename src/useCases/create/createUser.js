@@ -5,7 +5,7 @@ async function createUser(user) {
     return await User.create(user);
     
   } catch (err) {
-    console.error(err);
+    throw new Error(err)
   }
 }
 

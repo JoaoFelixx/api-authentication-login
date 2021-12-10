@@ -1,10 +1,11 @@
 const { v4 } = require('uuid');
+const bcrypt = require('bcryptjs');
 
 class User {
   constructor ({ email, password, _id }) {
     this._id = !_id ? v4() : _id;
     this.email = email;
-    this.password = password;
+    this.password = bcrypt.hashSync(password, 8);
   }
 
   isValid( ){

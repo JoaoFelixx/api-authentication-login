@@ -1,7 +1,5 @@
 const mySqlConfig = require('./mysqlConfig');
 
-const config = {
+module.exports = {
   mySqlConfig,
-}
-
-module.exports = config;
+};
