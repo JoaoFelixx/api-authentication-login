@@ -8,9 +8,11 @@ const {
 
 const router = Router();
 
-router.get('/users', middleware_jwt, getController)
+router.post('/users', createUserController);
+router.post('/auth', authUserController);
 
-router.post('/users', createUserController)
-router.post('/auth', authUserController)
+router.use(middleware_jwt);
+
+router.get('/users', getController)
 
 module.exports = router;
