@@ -2,7 +2,7 @@ const express = require("express");
 const { middleware_cors } = require("./middlewares");
 const { mysqlConnection: mySql } = require('./connection')
 const routes = require("./routes");
-const PORT = 3000;
+const PORT = 5000;
 
 const app = express();
 

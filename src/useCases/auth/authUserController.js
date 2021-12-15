@@ -7,7 +7,7 @@ async function authUserController(request, response) {
     const { email, password } = request.body;
     const [[userExists]] = await User.getOne(email);
 
-    if (userExists.length === 0) return response.status(400).json({ error: 'User not registered' })
+    if (!userExists) return response.status(204).json({ error: 'User not registered' })
 
     const passwordIsCorrect = await bcrypt.compare(password, userExists.password)
 
