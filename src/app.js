@@ -18,4 +18,4 @@ mySql.connect(err => {
 app.use(routes);
 
 
-app.listen(PORT, () => console.log('Server on at http://localhost:3000'))
+app.listen(PORT, () => console.log(`Server on at http://localhost:${PORT}`))
