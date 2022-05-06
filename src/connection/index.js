@@ -1,5 +1,3 @@
-const mysqlConnection = require('./mysql');
+const { mysql } = require('./mysql');
 
-module.exports = {
-  mysqlConnection,
-};
+module.exports = { mysql };

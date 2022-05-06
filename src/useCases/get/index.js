@@ -1,3 +1,3 @@
-const getController = require('./getController')
+const { getController } = require('./getController')
 
-module.exports = getController;
+module.exports = { getController };

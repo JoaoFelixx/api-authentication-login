@@ -1,9 +1,9 @@
-const createUserController =  require('./create');
-const authUserController = require('./auth');
-const getController = require('./get'); 
+const { getController } = require('./get');
+const { authUserController } = require('./auth');
+const { createUserController } = require('./create');
 
 module.exports = {
-  createUserController,
-  authUserController,
   getController,
+  authUserController,
+  createUserController,
 };

@@ -1,27 +1,22 @@
-const authUser = require('./authUser');
-const bcrypt = require('bcryptjs');
-const { UserService: User } = require('../../services') 
+const { authUser } = require('./authUser');
 
 async function authUserController(request, response) {
   try {
-    const { email, password } = request.body;
-    const [[userExists]] = await User.getOne(email);
+    const regexEmail = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
 
-    if (!userExists) return response.status(204).json({ error: 'User not registered' })
+    if (!regexEmail.test(request.body.email))
+      return response.status(400).json('Email is invalid');
 
-    const passwordIsCorrect = await bcrypt.compare(password, userExists.password)
+    const result = await authUser(request.body);
 
-    if (!passwordIsCorrect) return response.status(400).json({ error: 'email or password is incorrect' })
-    
-    delete userExists.password
+    if (result instanceof Error)
+      return response.status(400).json(result.message);
 
-    const token = authUser(userExists._id)
-
-    return response.status(201).json({ user: userExists, token })
+    return response.status(201).json({ user: result })
 
   } catch (err) {
     return response.sendStatus(409)
   }
 }
 
-module.exports = authUserController;
+module.exports = { authUserController };

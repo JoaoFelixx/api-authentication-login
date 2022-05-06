@@ -1,21 +1,14 @@
 const express = require("express");
-const { middleware_cors } = require("./middlewares");
-const { mysqlConnection: mySql } = require('./connection')
-const routes = require("./routes");
-const PORT = 5000;
+const { middlewareCors } = require("./middlewares");
+const { mysql } = require('./connection')
+const { routes } = require("./routes");
 
 const app = express();
 
+mysql.connect(err => !err && console.log('Connection successful'));
+
+app.use(middlewareCors);
 app.use(express.json());
-app.use(middleware_cors);
-
-mySql.connect(err => {
-  if (err) throw new Error(err)
-
-  console.log('Connection successful')
-})
-
 app.use(routes);
 
-
-app.listen(PORT, () => console.log(`Server on at http://localhost:${PORT}`))
+module.exports = { app }

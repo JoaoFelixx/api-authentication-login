@@ -1,7 +1,3 @@
-const get = require('./get');
+const getController = (request, response) => response.sendStatus(200);
 
-async function getController(request, response) {
-  return response.sendStatus(200);
-}
-
-module.exports = getController
+module.exports = { getController }

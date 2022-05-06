@@ -1,6 +1,4 @@
-const { UserRepository } = require('../repository');
-const userRepository = new UserRepository(); 
-
+const { userRepository } = require('../repository');
 
 class UserService {
 
@@ -19,10 +17,6 @@ class UserService {
   static async update(user) {
     return await userRepository.update(user)
   }
-
-  static async auth(_id) {
-    
-  }
 }
 
-module.exports = UserService;
+module.exports = { UserService };
